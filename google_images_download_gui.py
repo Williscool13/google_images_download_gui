@@ -7,7 +7,7 @@ import os
 #Appending the list of words into array
 def append_txt_to_array(txt_file):
     word_list = []
-    f = open(txt_file,"r")
+    f = open(txt_file,"r+")
     for x in f:
         word_list.append(x.rstrip("\n").lower())
         word_list = list(set(word_list))
