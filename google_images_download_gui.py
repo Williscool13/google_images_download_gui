@@ -249,7 +249,7 @@ def entry_validation(keywords,word_list):
 #taking the word from each line of the text file and store it into variable called "searchHistory"
 def append_txt_to_searchHistory():
     word_list = []
-    f = open('history_keyword.txt',"r")
+    f = open('history_keyword.txt',"a+")
     counter=1
     for x in f:
         if counter <=10:
