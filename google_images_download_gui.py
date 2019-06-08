@@ -3,6 +3,7 @@ import tkinter
 from tkinter import *
 from tkinter import messagebox
 import os
+import sys
 #------------CENSORSHIPS----------# 1st Feature
 #Appending the list of words into array
 def append_txt_to_array(txt_file):
@@ -250,6 +251,7 @@ def entry_validation(keywords,word_list):
 def append_txt_to_searchHistory():
     word_list = []
     f = open('history_keyword.txt',"a+")
+    f = open('history_keyword.txt',"r")
     counter=1
     for x in f:
         if counter <=10:
@@ -258,6 +260,12 @@ def append_txt_to_searchHistory():
             counter+=1
     f.close()
     return word_list
+
+#check whether a file exist or not
+def file_exist(file_path):
+    if os.path.isfile(file_path):
+        return True
+    return False
 
 #----------------MAIN-----------------#
 Records = {}
@@ -272,6 +280,14 @@ sizeList =["large", "medium", "icon", ">400*300", ">640*480", ">800*600", ">1024
 #Retrieve all previously searched word from search history txt and store it to searchHistory as an array
 #Store list of censored word to censored_word array
 searchHistory = append_txt_to_searchHistory()
+print(file_exist("censored_list_of_words.txt"))
+if file_exist("censored_list_of_words.txt")==False:
+    notif = Tk()
+    notif.geometry('0x0')
+    messagebox.showinfo("WARNING!!","The censored list of data file does not exists\nPlease make sure the txt file is on the same folder as google_images_download_gui.py\nConsider downloading from \nhttps://github.com/WR-BillRich/google_images_download_gui")
+    notif.destroy()
+    sys.exit()
+
 censored_word = append_txt_to_array("censored_list_of_words.txt")
 
 #initialize the main gui
