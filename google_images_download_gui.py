@@ -44,17 +44,16 @@ def mainMenu():
 
     
     #++++row 0+++++ Keyword
-    l_Keyword = Label(mainMenu, text="Keyword: ").grid(row=0, sticky=W,pady=5)  #keyword label (text)
-    e_Keyword = Entry(mainMenu,width=20)                                                                         #entry for keyword (entry box)
+    l_Keyword = Label(mainMenu, text="Keyword: ").grid(row=0, sticky=W,pady=5)  		       #keyword label (text)
+    e_Keyword = Entry(mainMenu,width=20)                                                               #entry for keyword (entry box)
     e_Keyword.grid(row=0, column=1,pady=5,sticky='ew')                                                 #shape and position of the entry box
-
-    defaultSearchHistoryValue = StringVar(mainMenu)                                                        #Variable to store the default value for searchHistory drop down button
+    defaultSearchHistoryValue = StringVar(mainMenu)                                                    #Variable to store the default value for searchHistory drop down button
     file_is_empty = check_empty_file("history_keyword.txt")                                            #Check whether text file is empty
-    if file_is_empty==False:                                                                                                           # If it is not empty set execute, if it is empty do not show the drop down button
+    if file_is_empty==False:                                                                           # If it is not empty set execute, if it is empty do not show the drop down button
         defaultSearchHistoryValue.set(searchHistory[0])                                                         
         l_Keyword = Label(mainMenu,text="Search History: ").grid(row=0,column=2,pady=5)
-        om_SearchHistory = OptionMenu(mainMenu,defaultSearchHistoryValue,*searchHistory)        #drop down button for searched word
-        om_SearchHistory.grid(row=0,column=3)                                                                                                #drop down button position
+        om_SearchHistory = OptionMenu(mainMenu,defaultSearchHistoryValue,*searchHistory)	       #drop down button for searched word
+        om_SearchHistory.grid(row=0,column=3)                                                          #drop down button position
     
     #+++++row 1++++ Input Keyword choice
     l_InputOption = Label(mainMenu,text="Search by: ").grid(row=1, column=0,pady=5,sticky=W)    
